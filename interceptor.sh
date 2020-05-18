@@ -56,23 +56,12 @@ if [[ "$user_descison3" == "1" ]]; then
 	
 	echo "Do you want inject JS keyloger? (y/n)"
 	read -p '--> ' user_descison4
-	
-	# JSKeylogger
-	if [[ "$user_descison4" == "y" ]]; then
-		echo -e "Moving next...\n"
-	else
-		echo -e "Moving next...\n"
-	fi
+	echo -e "Moving next...\n"
 
 	echo "Do you want to enable sslstrip? (y/n)"
 	read -p '--> ' user_descison5
 
-	# SSLStrip	
-	if [[ "$user_descison5" == "y" ]]; then
-		echo -e "Moving next...\n"
-	else
-		echo -e "Moving next...\n"
-	fi
+	echo -e "Moving next...\n"
 	
 	echo "Enter path to save captured data (/home/kali/Desktop/captured.cap)"
 	read -p '--> ' path
